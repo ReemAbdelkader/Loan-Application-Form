@@ -104,8 +104,61 @@ input:focus {
 
 /* media queries */
 
-@media (max-width: 400px) {
+@media (max-width: 768px) {
+
+    .App {
+        width: 90%;
+    }
+
     .main {
-        width: 315px;
+        width: 90%;
+        padding: 3%;
+        margin-top: 2%;
+    }
+    
+    .form {
+        width: 100%;
+        padding: 8%;
+        margin: 0;
+    }
+    
+    .input {
+        width: 95%;
+    }
+
+    .input, .select {
+        padding: 5px;
+        font-size: 16px; 
+    }
+    
+    .flexLable {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .App {
+        width: 95%;
+    }
+
+    .form {
+        padding: 5%;
+        margin-top: 1%;
+    }
+    
+    .form h2 {
+        font-size: 1.5rem;
+    }
+    
+    .input, .select {
+        padding: 5px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .form {
+        width: 500px;
     }
 }
