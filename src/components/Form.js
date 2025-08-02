@@ -1,6 +1,5 @@
 import './FormStyle.css';
 import { useState } from 'react';
-import Model from './Model';
 
 export default function Form () {
 
@@ -99,8 +98,7 @@ export default function Form () {
 
                 <button className={allInFormIsValid() ? 'activeBtn' : 'inactiveBtn'} disabled={!allInFormIsValid()} type='submit'>Submit</button>
             </form>
-
-            {/* <Model /> */}
         </div>
     )
+
 }
