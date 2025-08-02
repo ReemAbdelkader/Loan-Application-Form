@@ -11,6 +11,9 @@ A responsive React-based loan application form with real-time validation and dyn
 - **Responsive Design**: Optimized for different screen sizes
 - **Multi-language Support**: Supports both English and Arabic characters in name field
 
+## Live Demo
+**[View Live Demo](https://loanappform.netlify.app/)**
+
 ## 📋 Form Fields
 
 - **Name**: Text validation with regex pattern supporting English and Arabic characters
