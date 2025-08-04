@@ -1,5 +1,6 @@
 import './FormStyle.css';
 import { useState } from 'react';
+import Model from './Model';
 
 export default function Form () {
 
@@ -13,6 +14,8 @@ export default function Form () {
     const [errorAge , setErrorAge] = useState('');
 
     const [salary , setSalary] = useState('');
+
+    const [validData , setValidData] = useState(false);
 
 
     // Function using UseState() for Validation Name
@@ -34,17 +37,17 @@ export default function Form () {
 
     // Function using UseState() for Validation Phone Number
     const ValidPhoneNumber =  (event) => {
-        const value = parseInt(event.target.value);
-        const convertedNumber = value.toString().length;
+        const phoneNumber = event.target.value.trim();
+        const validPhoneNumberRegx = /^(010|011|012|015)[0-9]{8}$/;
 
-        if (convertedNumber < 10 || convertedNumber > 12) {
-            setErrorNum("Invalid Phone Number")
+        if (!validPhoneNumberRegx.test(phoneNumber)) {
+            setErrorNum("Invalid Phone Number");
         }
         else {
             setErrorNum('');
         }
 
-        setNum(value);
+        setNum(phoneNumber);
     };
 
     // Function using UseState() for Validation Age
@@ -71,8 +74,21 @@ export default function Form () {
         return validName && validPhone && validAge ;
     }
 
+    // Handle the submit button to verify the data user entered
+    function handleClickBtn (event) {
+        event.preventDefault();
+        setValidData(true);
+    }
+
+    // not show the modle of successfully data entered
+    function handleDisplaySucessData () {
+        if (validData === true) {
+            setValidData(false);
+        }
+    }
+
     return (
-        <div className='main text'>
+        <div className='main text' onClick={handleDisplaySucessData}>
             <form className='form'>
                 <h2>Requesting a loan</h2>
                 <hr className="line"></hr>
@@ -96,9 +112,10 @@ export default function Form () {
                     <option value='large'>salary larger than 2000$</option>
                 </select>
 
-                <button className={allInFormIsValid() ? 'activeBtn' : 'inactiveBtn'} disabled={!allInFormIsValid()} type='submit'>Submit</button>
+                <button className={allInFormIsValid() ? 'activeBtn' : 'inactiveBtn'} disabled={!allInFormIsValid()} onClick={handleClickBtn} type='submit'>Submit</button>
             </form>
+
+            <Model isVisible={validData}/>
         </div>
     )
-
 }
